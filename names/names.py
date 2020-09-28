@@ -1,5 +1,44 @@
 import time
 
+############ Adding Binary Search Tree #############
+class BSTNode:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+    def insert(self, value):
+        if self.value is None:
+            self.value = value
+        if value < self.value:
+            if self.left is None:
+                self.left = BSTNode(value)
+            else: 
+                self.left.insert(value)
+        if value >= self.value:
+            if self.right is None:
+                self.right = BSTNode(value)
+            else: 
+                self.right.insert(value)
+    def contains(self, target):
+        if self.value == target:
+            return True
+        if target < self.value:
+            if self.left is None:
+                return False
+            elif target == self.left:
+                return True
+            else:
+                return self.left.contains(target)
+        if target >= self.value:
+            if self.right is None: 
+                return False
+            elif target == self.right:
+                return True
+            else:
+                return self.right.contains(target)
+
+########### Done ending Binary Search Tree ###########
+
 start_time = time.time()
 
 f = open('names_1.txt', 'r')
